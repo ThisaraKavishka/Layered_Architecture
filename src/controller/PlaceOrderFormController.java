@@ -3,11 +3,10 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dao.CustomerDAOImpl;
-import dao.ItemDAOImpl;
-import dao.OrderDAOImpl;
-import dao.OrderDetailsDAOImpl;
-import db.DBConnection;
+import superDAO.CustomerDAOImpl;
+import superDAO.ItemDAOImpl;
+import superDAO.OrderDAOImpl;
+import superDAO.OrderDetailsDAOImpl;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -194,7 +193,7 @@ public class PlaceOrderFormController {
     public String generateNewOrderId() {
         try {
             OrderDAOImpl orderDAO = new OrderDAOImpl();
-            return orderDAO.genarateNewOID();
+            return orderDAO.generateNewOID();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to generate a new order id").show();
         } catch (ClassNotFoundException e) {

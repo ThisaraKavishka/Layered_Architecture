@@ -1,4 +1,4 @@
-package dao;
+package superDAO;
 
 import db.DBConnection;
 import model.OrderDetailDTO;

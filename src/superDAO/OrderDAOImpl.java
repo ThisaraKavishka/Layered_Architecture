@@ -1,4 +1,4 @@
-package dao;
+package superDAO;
 
 import db.DBConnection;
 import model.OrderDTO;
@@ -6,7 +6,7 @@ import model.OrderDTO;
 import java.sql.*;
 
 public class OrderDAOImpl {
-    public String genarateNewOID() throws SQLException, ClassNotFoundException {
+    public String generateNewOID() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         Statement stm = connection.createStatement();
         ResultSet rst = stm.executeQuery("SELECT oid FROM `Orders` ORDER BY oid DESC LIMIT 1;");
