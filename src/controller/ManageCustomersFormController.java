@@ -2,7 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import superDAO.CustomerDAOImpl;
+import superDAO.DAO.DAOImpl.CustomerDAOImpl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
