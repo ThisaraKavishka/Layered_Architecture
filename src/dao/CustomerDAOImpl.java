@@ -2,6 +2,7 @@ package dao;
 
 import db.DBConnection;
 import model.CustomerDTO;
+import model.ItemDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -60,5 +61,14 @@ public class CustomerDAOImpl {
         } else {
             return "C00-001";
         }
+    }
+
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getDbConnection().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Customer WHERE id=?");
+        pstm.setString(1, id + "");
+        ResultSet rst = pstm.executeQuery();
+        rst.next();
+        return new CustomerDTO(id + "", rst.getString("name"), rst.getString("address"));
     }
 }
