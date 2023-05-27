@@ -1,9 +1,7 @@
 package superDAO.DAO.DAOImpl;
 
-import db.DBConnection;
 import model.CustomerDTO;
 import superDAO.CrudDAO;
-import superDAO.DAO.CustomerDAO;
 import superDAO.SQLUtil;
 
 import java.sql.*;

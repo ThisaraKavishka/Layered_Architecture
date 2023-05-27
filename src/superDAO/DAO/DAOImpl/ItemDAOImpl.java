@@ -2,16 +2,17 @@ package superDAO.DAO.DAOImpl;
 
 import db.DBConnection;
 import model.ItemDTO;
+import superDAO.CrudDAO;
 import superDAO.DAO.ItemDAO;
 import superDAO.SQLUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ItemDAOImpl implements ItemDAO {
+public class ItemDAOImpl implements CrudDAO<ItemDTO> {
 
     @Override
-    public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
+    public ArrayList<ItemDTO> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Item");
         ArrayList<ItemDTO> allCustomers = new ArrayList<>();
         while (rst.next()) {
@@ -21,23 +22,18 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean saveItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean add(ItemDTO dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO Item (code, description, unitPrice, qtyOnHand) VALUES (?,?,?,?)", dto.getCode(), dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand());
     }
 
     @Override
-    public boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean update(ItemDTO dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE Item SET description=?, unitPrice=?, qtyOnHand=? WHERE code=?", dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand(), dto.getCode());
     }
 
     @Override
-    public boolean existItem(String code) throws SQLException, ClassNotFoundException {
+    public boolean exist(String code) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("SELECT code FROM Item WHERE code=?", code);
-    }
-
-    @Override
-    public boolean deleteItem(String code) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("DELETE FROM Item WHERE code=?", code);
     }
 
     @Override
@@ -53,9 +49,15 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
+    public boolean delete(String code) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("DELETE FROM Item WHERE code=?", code);
+    }
+
+    @Override
+    public ItemDTO search(String code) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Item WHERE code=?", code);
         rst.next();
         return new ItemDTO(code, rst.getString("description"), rst.getBigDecimal("unitPrice"), rst.getInt("qtyOnHand"));
     }
+
 }
