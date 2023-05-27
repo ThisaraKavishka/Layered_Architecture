@@ -63,7 +63,7 @@ public class PlaceOrderFormController {
     CrudDAO<CustomerDTO> customerDAO = new CustomerDAOImpl();
     CrudDAO<ItemDTO> itemDAO = new ItemDAOImpl();
     CrudDAO<OrderDTO> orderDAO = new OrderDAOImpl();
-    OrderDetailsDAOImpl orderDetailsDAO = new OrderDetailsDAOImpl();
+    CrudDAO<OrderDetailDTO> orderDetailsDAO = new OrderDetailsDAOImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
@@ -340,7 +340,7 @@ public class PlaceOrderFormController {
             }
 
             for (OrderDetailDTO detail : orderDetails) {
-                boolean save = orderDetailsDAO.saveOrderDetails(detail);
+                boolean save = orderDetailsDAO.add(detail);
                 if (!save) {
                     connection.rollback();
                     connection.setAutoCommit(true);
