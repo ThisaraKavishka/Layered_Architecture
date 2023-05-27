@@ -1,6 +1,5 @@
 package superDAO.DAO;
 
-import db.DBConnection;
 import model.ItemDTO;
 
 import java.sql.*;
