@@ -1,9 +1,7 @@
 package superDAO.DAO;
 
 import model.OrderDetailDTO;
+import superDAO.CrudDAO;
 
-import java.sql.SQLException;
-
-public interface OrderDetailsDAO {
-    public boolean saveOrderDetails(OrderDetailDTO dto) throws SQLException, ClassNotFoundException;
+public interface OrderDetailsDAO extends CrudDAO<OrderDetailDTO> {
 }

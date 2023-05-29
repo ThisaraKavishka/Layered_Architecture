@@ -1,17 +1,13 @@
 package superDAO.DAO.DAOImpl;
 
-import db.DBConnection;
 import model.OrderDetailDTO;
-import superDAO.CrudDAO;
 import superDAO.DAO.OrderDetailsDAO;
 import superDAO.SQLUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OrderDetailsDAOImpl implements CrudDAO<OrderDetailDTO> {
+public class OrderDetailsDAOImpl implements OrderDetailsDAO {
 
     @Override
     public ArrayList<OrderDetailDTO> getAll() throws SQLException, ClassNotFoundException {

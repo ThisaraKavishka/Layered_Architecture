@@ -3,7 +3,6 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import superDAO.CrudDAO;
 import superDAO.DAO.CustomerDAO;
 import superDAO.DAO.DAOImpl.CustomerDAOImpl;
 import superDAO.DAO.DAOImpl.ItemDAOImpl;
@@ -27,6 +26,7 @@ import model.OrderDTO;
 import model.OrderDetailDTO;
 import superDAO.DAO.ItemDAO;
 import superDAO.DAO.OrderDAO;
+import superDAO.DAO.OrderDetailsDAO;
 import view.tdm.OrderDetailTM;
 
 import java.io.IOException;
@@ -66,7 +66,7 @@ public class PlaceOrderFormController {
     CustomerDAO customerDAO = new CustomerDAOImpl();
     ItemDAO itemDAO = new ItemDAOImpl();
     OrderDAO orderDAO = new OrderDAOImpl();
-    CrudDAO<OrderDetailDTO> orderDetailsDAO = new OrderDetailsDAOImpl();
+    OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAOImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
