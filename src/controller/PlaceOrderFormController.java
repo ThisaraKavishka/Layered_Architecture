@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import superDAO.CrudDAO;
+import superDAO.DAO.CustomerDAO;
 import superDAO.DAO.DAOImpl.CustomerDAOImpl;
 import superDAO.DAO.DAOImpl.ItemDAOImpl;
 import superDAO.DAO.DAOImpl.OrderDAOImpl;
@@ -24,6 +25,8 @@ import model.CustomerDTO;
 import model.ItemDTO;
 import model.OrderDTO;
 import model.OrderDetailDTO;
+import superDAO.DAO.ItemDAO;
+import superDAO.DAO.OrderDAO;
 import view.tdm.OrderDetailTM;
 
 import java.io.IOException;
@@ -60,9 +63,9 @@ public class PlaceOrderFormController {
     private String orderId;
 
     //Dependency (DI) Injection
-    CrudDAO<CustomerDTO> customerDAO = new CustomerDAOImpl();
-    CrudDAO<ItemDTO> itemDAO = new ItemDAOImpl();
-    CrudDAO<OrderDTO> orderDAO = new OrderDAOImpl();
+    CustomerDAO customerDAO = new CustomerDAOImpl();
+    ItemDAO itemDAO = new ItemDAOImpl();
+    OrderDAO orderDAO = new OrderDAOImpl();
     CrudDAO<OrderDetailDTO> orderDetailsDAO = new OrderDetailsDAOImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {

@@ -1,13 +1,10 @@
 package superDAO.DAO;
 
 import model.OrderDTO;
+import superDAO.CrudDAO;
 
 import java.sql.*;
 
-public interface OrderDAO {
-    public String generateNewOID() throws SQLException, ClassNotFoundException ;
+public interface OrderDAO extends CrudDAO<OrderDTO> {
 
-    public boolean exitOrder(String orderId) throws SQLException, ClassNotFoundException ;
-
-    public boolean saveOrder(OrderDTO dto) throws SQLException, ClassNotFoundException ;
 }
