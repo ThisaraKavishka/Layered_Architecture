@@ -1,5 +1,7 @@
 package superDAO.DAO;
 
-public interface QueryDAO {
+import superDAO.SuperDAO;
+
+public interface QueryDAO extends SuperDAO {
     void search();
 }
