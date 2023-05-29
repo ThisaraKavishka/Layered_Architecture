@@ -1,15 +1,13 @@
 package superDAO.DAO.DAOImpl;
 
-import db.DBConnection;
 import model.ItemDTO;
-import superDAO.CrudDAO;
 import superDAO.DAO.ItemDAO;
 import superDAO.SQLUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ItemDAOImpl implements CrudDAO<ItemDTO> {
+public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public ArrayList<ItemDTO> getAll() throws SQLException, ClassNotFoundException {
@@ -59,5 +57,4 @@ public class ItemDAOImpl implements CrudDAO<ItemDTO> {
         rst.next();
         return new ItemDTO(code, rst.getString("description"), rst.getBigDecimal("unitPrice"), rst.getInt("qtyOnHand"));
     }
-
 }

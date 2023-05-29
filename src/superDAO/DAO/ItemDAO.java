@@ -1,22 +1,8 @@
 package superDAO.DAO;
 
 import model.ItemDTO;
+import superDAO.CrudDAO;
 
-import java.sql.*;
-import java.util.ArrayList;
+public interface ItemDAO extends CrudDAO<ItemDTO> {
 
-public interface ItemDAO {
-    public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException;
-
-    public boolean saveItem(ItemDTO dto) throws SQLException, ClassNotFoundException;
-
-    public boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException;
-
-    public boolean existItem(String code) throws SQLException, ClassNotFoundException;
-
-    public boolean deleteItem(String code) throws SQLException, ClassNotFoundException;
-
-    public String generateNewId() throws SQLException, ClassNotFoundException;
-
-    public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException;
 }
