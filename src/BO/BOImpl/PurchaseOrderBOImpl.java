@@ -1,4 +1,4 @@
-package BOImpl;
+package BO.BOImpl;
 
 import model.CustomerDTO;
 import model.ItemDTO;

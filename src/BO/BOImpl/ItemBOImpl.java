@@ -1,4 +1,4 @@
-package BOImpl;
+package BO.BOImpl;
 
 import model.ItemDTO;
 import superDAO.DAO.DAOImpl.ItemDAOImpl;
