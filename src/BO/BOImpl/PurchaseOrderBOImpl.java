@@ -6,13 +6,10 @@ import model.ItemDTO;
 import model.OrderDTO;
 import model.OrderDetailDTO;
 import superDAO.DAO.CustomerDAO;
-import superDAO.DAO.DAOImpl.CustomerDAOImpl;
-import superDAO.DAO.DAOImpl.ItemDAOImpl;
-import superDAO.DAO.DAOImpl.OrderDAOImpl;
-import superDAO.DAO.DAOImpl.OrderDetailsDAOImpl;
 import superDAO.DAO.ItemDAO;
 import superDAO.DAO.OrderDAO;
 import superDAO.DAO.OrderDetailsDAO;
+import superDAO.DAOFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,10 +19,10 @@ import java.util.List;
 
 public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
-    CustomerDAO customerDAO = new CustomerDAOImpl();
-    ItemDAO itemDAO = new ItemDAOImpl();
-    OrderDAO orderDAO = new OrderDAOImpl();
-    OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAOImpl();
+    CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+    ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
+    OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
+    OrderDetailsDAO orderDetailsDAO = (OrderDetailsDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER_DETAILS);
 
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
