@@ -1,10 +1,7 @@
 package superDAO.DAO;
 
-import model.OrderDTO;
+import entity.Orders;
 import superDAO.CrudDAO;
 
-import java.sql.*;
-
-public interface OrderDAO extends CrudDAO<OrderDTO> {
-
+public interface OrderDAO extends CrudDAO<Orders> {
 }

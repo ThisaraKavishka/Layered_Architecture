@@ -1,9 +1,11 @@
 package superBO.BO.BOImpl;
 
+import entity.Customer;
+import entity.Item;
+import entity.Orders;
 import superBO.BO.PurchaseOrderBO;
 import model.CustomerDTO;
 import model.ItemDTO;
-import model.OrderDTO;
 import model.OrderDetailDTO;
 import superDAO.DAO.CustomerDAO;
 import superDAO.DAO.ItemDAO;
@@ -26,12 +28,14 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        return customerDAO.search(id);
+        Customer customer = customerDAO.search(id);
+        return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress());
     }
 
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-        return itemDAO.search(code);
+        Item item = itemDAO.search(code);
+        return new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand());
     }
 
     @Override
@@ -51,12 +55,22 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
     @Override
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
-        return customerDAO.getAll();
+        ArrayList<Customer> customers = customerDAO.getAll();
+        ArrayList<CustomerDTO> customerDTOS = new ArrayList<>();
+        for (Customer customer : customers) {
+            customerDTOS.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress()));
+        }
+        return customerDTOS;
     }
 
     @Override
     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
-        return itemDAO.getAll();
+        ArrayList<Item> items = itemDAO.getAll();
+        ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
+        for (Item item : items) {
+            itemDTOS.add(new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
+        }
+        return itemDTOS;
     }
 
     @Override
@@ -73,7 +87,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
             connection.setAutoCommit(false);
             //save order
-            boolean isSave = orderDAO.add(new OrderDTO(orderId, orderDate, customerId));
+            boolean isSave = orderDAO.add(new Orders(orderId, orderDate, customerId));
             if (!isSave) {
                 connection.rollback();
                 connection.setAutoCommit(true);
@@ -92,7 +106,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
                 ItemDTO item = findItem(detail.getItemCode());
                 item.setQtyOnHand(item.getQtyOnHand() - detail.getQty());
 
-                boolean updateItem = itemDAO.update(new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
+                boolean updateItem = itemDAO.update(new Item(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
 
                 if (!updateItem) {
                     connection.rollback();
@@ -116,7 +130,9 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
     @Override
     public ItemDTO findItem(String code) {
         try {
-            return itemDAO.search(code);
+            Item item = itemDAO.search(code);
+            return new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand());
+
         } catch (SQLException e) {
             throw new RuntimeException("Failed to find the Item " + code, e);
         } catch (ClassNotFoundException e) {

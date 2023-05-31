@@ -1,6 +1,6 @@
 package superDAO.DAO.DAOImpl;
 
-import model.OrderDTO;
+import entity.Orders;
 import superDAO.DAO.OrderDAO;
 import superDAO.SQLUtil;
 
@@ -10,17 +10,17 @@ import java.util.ArrayList;
 public class OrderDAOImpl implements OrderDAO {
 
     @Override
-    public ArrayList<OrderDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean add(OrderDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean add(Orders dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO `Orders` (oid, date, customerID) VALUES (?,?,?)", dto.getOrderId(), Date.valueOf(dto.getOrderDate()), dto.getCustomerId());
     }
 
     @Override
-    public boolean update(OrderDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Orders dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -41,7 +41,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public OrderDTO search(String id) throws SQLException, ClassNotFoundException {
+    public Orders search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }
