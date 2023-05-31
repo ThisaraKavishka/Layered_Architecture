@@ -1,6 +1,6 @@
-package BO.BOImpl;
+package superBO.BO.BOImpl;
 
-import BO.PurchaseOrderBO;
+import superBO.BO.PurchaseOrderBO;
 import model.CustomerDTO;
 import model.ItemDTO;
 import model.OrderDTO;

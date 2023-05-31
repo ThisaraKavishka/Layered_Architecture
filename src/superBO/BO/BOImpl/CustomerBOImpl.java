@@ -1,6 +1,6 @@
-package BO.BOImpl;
+package superBO.BO.BOImpl;
 
-import BO.CustomerBO;
+import superBO.BO.CustomerBO;
 import model.CustomerDTO;
 import superDAO.DAO.CustomerDAO;
 import superDAO.DAOFactory;

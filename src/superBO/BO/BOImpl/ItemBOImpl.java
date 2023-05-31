@@ -1,6 +1,6 @@
-package BO.BOImpl;
+package superBO.BO.BOImpl;
 
-import BO.ItemBO;
+import superBO.BO.ItemBO;
 import model.ItemDTO;
 import superDAO.DAO.ItemDAO;
 import superDAO.DAOFactory;
