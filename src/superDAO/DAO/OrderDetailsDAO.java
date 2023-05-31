@@ -1,7 +1,7 @@
 package superDAO.DAO;
 
-import model.OrderDetailDTO;
+import entity.OrderDetails;
 import superDAO.CrudDAO;
 
-public interface OrderDetailsDAO extends CrudDAO<OrderDetailDTO> {
+public interface OrderDetailsDAO extends CrudDAO<OrderDetails> {
 }

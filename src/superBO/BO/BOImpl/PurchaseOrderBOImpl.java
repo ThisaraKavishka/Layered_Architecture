@@ -2,6 +2,7 @@ package superBO.BO.BOImpl;
 
 import entity.Customer;
 import entity.Item;
+import entity.OrderDetails;
 import entity.Orders;
 import superBO.BO.PurchaseOrderBO;
 import model.CustomerDTO;
@@ -95,7 +96,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
             }
 
             for (OrderDetailDTO detail : orderDetails) {
-                boolean save = orderDetailsDAO.add(detail);
+                boolean save = orderDetailsDAO.add(new OrderDetails(detail.getOid(),detail.getItemCode(),detail.getQty(),detail.getUnitPrice()));
                 if (!save) {
                     connection.rollback();
                     connection.setAutoCommit(true);
@@ -119,8 +120,8 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
             connection.setAutoCommit(true);
             return true;
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
