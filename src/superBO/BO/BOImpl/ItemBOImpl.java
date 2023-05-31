@@ -1,5 +1,6 @@
 package superBO.BO.BOImpl;
 
+import entity.Item;
 import superBO.BO.ItemBO;
 import model.ItemDTO;
 import superDAO.DAO.ItemDAO;
@@ -14,17 +15,22 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
-        return itemDAO.getAll();
+        ArrayList<Item> items = itemDAO.getAll();
+        ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
+        for (Item item : items) {
+            itemDTOS.add(new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
+        }
+        return itemDTOS;
     }
 
     @Override
     public boolean addItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
-        return itemDAO.add(dto);
+        return itemDAO.add(new Item(dto.getCode(), dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand()));
     }
 
     @Override
     public boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
-        return itemDAO.update(dto);
+        return itemDAO.update(new Item(dto.getCode(), dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand()));
     }
 
     @Override
@@ -44,6 +50,7 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
-        return itemDAO.search(code);
+        Item item = itemDAO.search(code);
+        return new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand());
     }
 }

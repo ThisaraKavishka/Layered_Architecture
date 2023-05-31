@@ -1,5 +1,6 @@
 package superDAO.DAO.DAOImpl;
 
+import entity.Item;
 import model.ItemDTO;
 import superDAO.DAO.ItemDAO;
 import superDAO.SQLUtil;
@@ -10,22 +11,22 @@ import java.util.ArrayList;
 public class ItemDAOImpl implements ItemDAO {
 
     @Override
-    public ArrayList<ItemDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Item> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Item");
-        ArrayList<ItemDTO> allCustomers = new ArrayList<>();
+        ArrayList<Item> allCustomers = new ArrayList<>();
         while (rst.next()) {
-            allCustomers.add(new ItemDTO(rst.getString(1), rst.getString(2), rst.getBigDecimal(3), rst.getInt(4)));
+            allCustomers.add(new Item(rst.getString(1), rst.getString(2), rst.getBigDecimal(3), rst.getInt(4)));
         }
         return allCustomers;
     }
 
     @Override
-    public boolean add(ItemDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean add(Item dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO Item (code, description, unitPrice, qtyOnHand) VALUES (?,?,?,?)", dto.getCode(), dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand());
     }
 
     @Override
-    public boolean update(ItemDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Item dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE Item SET description=?, unitPrice=?, qtyOnHand=? WHERE code=?", dto.getDescription(), dto.getUnitPrice(), dto.getQtyOnHand(), dto.getCode());
     }
 
@@ -52,9 +53,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ItemDTO search(String code) throws SQLException, ClassNotFoundException {
+    public Item search(String code) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Item WHERE code=?", code);
         rst.next();
-        return new ItemDTO(code, rst.getString("description"), rst.getBigDecimal("unitPrice"), rst.getInt("qtyOnHand"));
+        return new Item(code, rst.getString("description"), rst.getBigDecimal("unitPrice"), rst.getInt("qtyOnHand"));
     }
 }
