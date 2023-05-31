@@ -1,5 +1,6 @@
 package superBO.BO.BOImpl;
 
+import entity.Customer;
 import superBO.BO.CustomerBO;
 import model.CustomerDTO;
 import superDAO.DAO.CustomerDAO;
@@ -14,17 +15,22 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
-        return customerDAO.getAll();
+        ArrayList<Customer> customers = customerDAO.getAll();
+        ArrayList<CustomerDTO> customerDTOS = new ArrayList<>();
+        for (Customer customer : customers) {
+            customerDTOS.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress()));
+        }
+        return customerDTOS;
     }
 
     @Override
     public boolean addCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
-        return customerDAO.add(dto);
+        return customerDAO.add(new Customer(dto.getId(), dto.getName(), dto.getAddress()));
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
-        return customerDAO.update(dto);
+        return customerDAO.update(new Customer(dto.getId(), dto.getName(), dto.getAddress()));
     }
 
     @Override
@@ -44,6 +50,7 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        return customerDAO.search(id);
+        Customer customer = customerDAO.search(id);
+        return new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress());
     }
 }

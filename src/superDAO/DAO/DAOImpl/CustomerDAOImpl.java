@@ -1,7 +1,6 @@
 package superDAO.DAO.DAOImpl;
 
-import model.CustomerDTO;
-import superDAO.CrudDAO;
+import entity.Customer;
 import superDAO.DAO.CustomerDAO;
 import superDAO.SQLUtil;
 
@@ -11,22 +10,22 @@ import java.util.ArrayList;
 public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
-    public ArrayList<CustomerDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Customer");
-        ArrayList<CustomerDTO> allCustomers = new ArrayList<>();
+        ArrayList<Customer> allCustomers = new ArrayList<>();
         while (rst.next()) {
-            allCustomers.add(new CustomerDTO(rst.getString(1), rst.getString(2), rst.getString(3)));
+            allCustomers.add(new Customer(rst.getString(1), rst.getString(2), rst.getString(3)));
         }
         return allCustomers;
     }
 
     @Override
-    public boolean add(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean add(Customer dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO Customer (id,name, address) VALUES (?,?,?)", dto.getId(), dto.getName(), dto.getAddress());
     }
 
     @Override
-    public boolean update(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE Customer SET name=?, address=? WHERE id=?", dto.getName(), dto.getAddress(), dto.getId());
     }
 
@@ -53,9 +52,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public CustomerDTO search(String id) throws SQLException, ClassNotFoundException {
+    public Customer search(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Customer WHERE id=?", id);
         rst.next();
-        return new CustomerDTO(id + "", rst.getString("name"), rst.getString("address"));
+        return new Customer(id + "", rst.getString("name"), rst.getString("address"));
     }
 }
