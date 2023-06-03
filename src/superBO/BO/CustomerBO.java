@@ -1,6 +1,6 @@
 package superBO.BO;
 
-import model.CustomerDTO;
+import dto.CustomerDTO;
 import superBO.SuperBO;
 
 import java.sql.SQLException;

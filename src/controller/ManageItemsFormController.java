@@ -1,7 +1,6 @@
 package controller;
 
 import superBO.BO.BOFactory;
-import superBO.BO.BOImpl.ItemBOImpl;
 import superBO.BO.ItemBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -17,7 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ItemDTO;
+import dto.ItemDTO;
 import view.tdm.ItemTM;
 
 import java.io.IOException;

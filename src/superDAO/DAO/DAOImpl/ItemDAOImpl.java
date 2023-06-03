@@ -1,7 +1,6 @@
 package superDAO.DAO.DAOImpl;
 
 import entity.Item;
-import model.ItemDTO;
 import superDAO.DAO.ItemDAO;
 import superDAO.SQLUtil;
 

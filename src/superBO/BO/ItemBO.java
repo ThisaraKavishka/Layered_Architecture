@@ -1,6 +1,6 @@
 package superBO.BO;
 
-import model.ItemDTO;
+import dto.ItemDTO;
 import superBO.SuperBO;
 
 import java.sql.SQLException;

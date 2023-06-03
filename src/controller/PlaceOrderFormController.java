@@ -1,7 +1,6 @@
 package controller;
 
 import superBO.BO.BOFactory;
-import superBO.BO.BOImpl.PurchaseOrderBOImpl;
 import superBO.BO.PurchaseOrderBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -18,9 +17,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.CustomerDTO;
-import model.ItemDTO;
-import model.OrderDetailDTO;
+import dto.CustomerDTO;
+import dto.ItemDTO;
+import dto.OrderDetailDTO;
 import view.tdm.OrderDetailTM;
 
 import java.io.IOException;

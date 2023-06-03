@@ -2,7 +2,7 @@ package superBO.BO.BOImpl;
 
 import entity.Item;
 import superBO.BO.ItemBO;
-import model.ItemDTO;
+import dto.ItemDTO;
 import superDAO.DAO.ItemDAO;
 import superDAO.DAOFactory;
 

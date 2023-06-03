@@ -2,7 +2,7 @@ package superBO.BO.BOImpl;
 
 import entity.Customer;
 import superBO.BO.CustomerBO;
-import model.CustomerDTO;
+import dto.CustomerDTO;
 import superDAO.DAO.CustomerDAO;
 import superDAO.DAOFactory;
 
