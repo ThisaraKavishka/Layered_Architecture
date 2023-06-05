@@ -26,7 +26,8 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean exist(String orderId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("SELECT oid FROM `Orders` WHERE oid=?", orderId);
+        ResultSet resultSet = SQLUtil.execute("SELECT oid FROM `Orders` WHERE oid=?", orderId);
+        return resultSet.next();
     }
 
     @Override
