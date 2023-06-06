@@ -1,10 +1,10 @@
-package superBO.BO.BOImpl;
+package bo.bos.impl;
 
 import entity.Customer;
-import superBO.BO.CustomerBO;
+import bo.bos.CustomerBO;
 import dto.CustomerDTO;
-import superDAO.DAO.CustomerDAO;
-import superDAO.DAOFactory;
+import dao.daos.CustomerDAO;
+import dao.DAOFactory;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

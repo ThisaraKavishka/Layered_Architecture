@@ -1,6 +1,6 @@
-package superDAO.DAO.DAOImpl;
+package dao.daos.impl;
 
-import superDAO.DAO.QueryDAO;
+import dao.daos.QueryDAO;
 
 public class QueryDAOImpl implements QueryDAO {
     @Override

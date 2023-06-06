@@ -1,4 +1,4 @@
-package superBO;
+package bo;
 
 public interface SuperBO {
 }

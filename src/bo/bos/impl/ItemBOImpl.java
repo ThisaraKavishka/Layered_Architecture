@@ -1,10 +1,10 @@
-package superBO.BO.BOImpl;
+package bo.bos.impl;
 
 import entity.Item;
-import superBO.BO.ItemBO;
+import bo.bos.ItemBO;
 import dto.ItemDTO;
-import superDAO.DAO.ItemDAO;
-import superDAO.DAOFactory;
+import dao.daos.ItemDAO;
+import dao.DAOFactory;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

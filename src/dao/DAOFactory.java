@@ -1,6 +1,6 @@
-package superDAO;
+package dao;
 
-import superDAO.DAO.DAOImpl.*;
+import dao.daos.impl.*;
 
 public class DAOFactory {
 

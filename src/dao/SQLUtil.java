@@ -1,4 +1,4 @@
-package superDAO;
+package dao;
 
 import db.DBConnection;
 

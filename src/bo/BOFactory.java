@@ -1,9 +1,8 @@
-package superBO.BO;
+package bo;
 
-import superBO.BO.BOImpl.CustomerBOImpl;
-import superBO.BO.BOImpl.ItemBOImpl;
-import superBO.BO.BOImpl.PurchaseOrderBOImpl;
-import superBO.SuperBO;
+import bo.bos.impl.CustomerBOImpl;
+import bo.bos.impl.ItemBOImpl;
+import bo.bos.impl.PurchaseOrderBOImpl;
 
 public class BOFactory {
 

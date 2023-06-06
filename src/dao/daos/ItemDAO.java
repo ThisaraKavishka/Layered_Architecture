@@ -1,7 +1,7 @@
-package superDAO.DAO;
+package dao.daos;
 
 import entity.Item;
-import superDAO.CrudDAO;
+import dao.CrudDAO;
 
 public interface ItemDAO extends CrudDAO<Item> {
 }

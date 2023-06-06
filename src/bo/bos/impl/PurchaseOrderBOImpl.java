@@ -1,18 +1,18 @@
-package superBO.BO.BOImpl;
+package bo.bos.impl;
 
 import entity.Customer;
 import entity.Item;
 import entity.OrderDetails;
 import entity.Orders;
-import superBO.BO.PurchaseOrderBO;
+import bo.bos.PurchaseOrderBO;
 import dto.CustomerDTO;
 import dto.ItemDTO;
 import dto.OrderDetailDTO;
-import superDAO.DAO.CustomerDAO;
-import superDAO.DAO.ItemDAO;
-import superDAO.DAO.OrderDAO;
-import superDAO.DAO.OrderDetailsDAO;
-import superDAO.DAOFactory;
+import dao.daos.CustomerDAO;
+import dao.daos.ItemDAO;
+import dao.daos.OrderDAO;
+import dao.daos.OrderDetailsDAO;
+import dao.DAOFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;

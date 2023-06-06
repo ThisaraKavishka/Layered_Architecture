@@ -1,9 +1,9 @@
-package superBO.BO;
+package bo.bos;
 
 import dto.CustomerDTO;
 import dto.ItemDTO;
 import dto.OrderDetailDTO;
-import superBO.SuperBO;
+import bo.SuperBO;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

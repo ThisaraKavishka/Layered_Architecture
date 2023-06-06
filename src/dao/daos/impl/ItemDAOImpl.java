@@ -1,8 +1,8 @@
-package superDAO.DAO.DAOImpl;
+package dao.daos.impl;
 
 import entity.Item;
-import superDAO.DAO.ItemDAO;
-import superDAO.SQLUtil;
+import dao.daos.ItemDAO;
+import dao.SQLUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

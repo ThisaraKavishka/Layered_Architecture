@@ -1,8 +1,8 @@
-package superDAO.DAO.DAOImpl;
+package dao.daos.impl;
 
 import entity.OrderDetails;
-import superDAO.DAO.OrderDetailsDAO;
-import superDAO.SQLUtil;
+import dao.daos.OrderDetailsDAO;
+import dao.SQLUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
